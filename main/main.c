@@ -75,8 +75,8 @@ static const char *TAG = "Aries_Line_Follower";
 #define DEBUG_LEVEL_xx2 1
 #define DEBUG_LEVEL_xx3 1
 //#define DELAY_IN_2SEC   1
-#define MOTOR_TEST 1              /*30 sec one direction and 30 sec another direction motor test*/
-
+//#define MOTOR_TEST 1              /*30 sec one direction and 30 sec another direction motor test*/
+#define IR_COND_BLOCK  1
 
 /*Macro define's for test LED*/ 
 #ifdef  LED_TEST
@@ -624,45 +624,61 @@ static void motor_forward(mach_typ type)
 
     if(m_type == MACHINE_1)
     {
+#ifndef IR_COND_BLOCK
         if((sens_1 == IR_STATE_LOW) && (sens_2 == IR_STATE_LOW))
         {
+#endif
             gpio_set_level(ARIES_DIR_MOTOR_M1_PIN,MOTOR_DIR_HIGH);
             gpio_set_level(ARIES_DIR_MOTOR_M2_PIN,MOTOR_DIR_HIGH);
             motor_control_1(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
             motor_control_2(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
+#ifndef IR_COND_BLOCK
         }
+#endif
     }
     else if(m_type == MACHINE_2)
     {
+#ifndef IR_COND_BLOCK
         if((sens_2 == IR_STATE_LOW) && (sens_3 == IR_STATE_LOW))
         {
+#endif
             gpio_set_level(ARIES_DIR_MOTOR_M1_PIN,MOTOR_DIR_HIGH);
             gpio_set_level(ARIES_DIR_MOTOR_M2_PIN,MOTOR_DIR_HIGH);
             motor_control_1(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
             motor_control_2(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
+#ifndef IR_COND_BLOCK
         }
+#endif
 
     }
     else if(m_type == MACHINE_3)
     {
+#ifndef IR_COND_BLOCK
         if((sens_3 == IR_STATE_LOW) && (sens_4 == IR_STATE_LOW))
         {
+#endif
             gpio_set_level(ARIES_DIR_MOTOR_M1_PIN,MOTOR_DIR_HIGH);
             gpio_set_level(ARIES_DIR_MOTOR_M2_PIN,MOTOR_DIR_HIGH);
             motor_control_1(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
             motor_control_2(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
+#ifndef IR_COND_BLOCK
         }
+#endif
 
     }
     else if(m_type == MACHINE_4)
     {
+#ifndef IR_COND_BLOCK
         if((sens_4 == IR_STATE_LOW) && (sens_5 == IR_STATE_LOW))
         {
+#endif
             gpio_set_level(ARIES_DIR_MOTOR_M1_PIN,MOTOR_DIR_HIGH);
             gpio_set_level(ARIES_DIR_MOTOR_M2_PIN,MOTOR_DIR_HIGH);
             motor_control_1(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
             motor_control_2(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
+#ifndef IR_COND_BLOCK
         }
+#endif
 
     }
     else
@@ -682,45 +698,64 @@ static void motor_left(mach_typ type)
 
     if(m_type == MACHINE_1)
     {
+#ifndef IR_COND_BLOCK
         if((sens_1 == IR_STATE_HIGH) && (sens_2 == IR_STATE_LOW))
         {
+#endif
             gpio_set_level(ARIES_DIR_MOTOR_M1_PIN,MOTOR_DIR_HIGH);
             gpio_set_level(ARIES_DIR_MOTOR_M2_PIN,MOTOR_DIR_LOW);
             motor_control_1(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
             motor_control_2(MCPWM_UNIT_0, MCPWM_TIMER_0, 40);
+#ifndef IR_COND_BLOCK
         }
+#endif
     }
     else if(m_type == MACHINE_2)
     {
+#ifndef IR_COND_BLOCK
         if((sens_2 == IR_STATE_HIGH) && (sens_3 == IR_STATE_LOW))
         {
+#endif
             gpio_set_level(ARIES_DIR_MOTOR_M1_PIN,MOTOR_DIR_HIGH);
             gpio_set_level(ARIES_DIR_MOTOR_M2_PIN,MOTOR_DIR_LOW);
             motor_control_1(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
             motor_control_2(MCPWM_UNIT_0, MCPWM_TIMER_0, 40);
+#ifndef IR_COND_BLOCK
         }
+#endif
 
     }
     else if(m_type == MACHINE_3)
     {
+#ifndef IR_COND_BLOCK
         if((sens_3 == IR_STATE_HIGH) && (sens_4 == IR_STATE_LOW))
         {
+#endif
+
             gpio_set_level(ARIES_DIR_MOTOR_M1_PIN,MOTOR_DIR_HIGH);
             gpio_set_level(ARIES_DIR_MOTOR_M2_PIN,MOTOR_DIR_LOW);
             motor_control_1(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
             motor_control_2(MCPWM_UNIT_0, MCPWM_TIMER_0, 40);
+#ifndef IR_COND_BLOCK
         }
+#endif
 
     }
     else if(m_type == MACHINE_4)
     {
+#ifndef IR_COND_BLOCK
         if((sens_4 == IR_STATE_HIGH) && (sens_5 == IR_STATE_LOW))
         {
+#endif
+
             gpio_set_level(ARIES_DIR_MOTOR_M1_PIN,MOTOR_DIR_HIGH);
             gpio_set_level(ARIES_DIR_MOTOR_M2_PIN,MOTOR_DIR_LOW);
             motor_control_1(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
             motor_control_2(MCPWM_UNIT_0, MCPWM_TIMER_0, 40);
+#ifndef IR_COND_BLOCK
         }
+#endif
+
 
     }
     else
@@ -736,43 +771,70 @@ static void motor_right(mach_typ type)
 
     if(m_type == MACHINE_1)
     {
+#ifndef IR_COND_BLOCK
+
         if((sens_2 == IR_STATE_HIGH) && (sens_1 == IR_STATE_LOW))
         {
+#endif      
             gpio_set_level(ARIES_DIR_MOTOR_M1_PIN,MOTOR_DIR_LOW);
             gpio_set_level(ARIES_DIR_MOTOR_M2_PIN,MOTOR_DIR_HIGH);
             motor_control_1(MCPWM_UNIT_0, MCPWM_TIMER_0, 40);
             motor_control_2(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
+#ifndef IR_COND_BLOCK
+
         }
+#endif      
+
     }
     else if(m_type == MACHINE_2)
     {
+#ifndef IR_COND_BLOCK
         if((sens_3 == IR_STATE_HIGH) && (sens_2 == IR_STATE_LOW))
         {
+#endif      
+
             gpio_set_level(ARIES_DIR_MOTOR_M1_PIN,MOTOR_DIR_LOW);
             gpio_set_level(ARIES_DIR_MOTOR_M2_PIN,MOTOR_DIR_HIGH);
             motor_control_1(MCPWM_UNIT_0, MCPWM_TIMER_0, 40);
             motor_control_2(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
+#ifndef IR_COND_BLOCK
+
         }
+#endif      
+
     }
     else if(m_type == MACHINE_3)
     {
+#ifndef IR_COND_BLOCK
         if((sens_4 == IR_STATE_HIGH) && (sens_3 == IR_STATE_LOW))
         {
+#endif      
+
             gpio_set_level(ARIES_DIR_MOTOR_M1_PIN,MOTOR_DIR_LOW);
             gpio_set_level(ARIES_DIR_MOTOR_M2_PIN,MOTOR_DIR_HIGH);
             motor_control_1(MCPWM_UNIT_0, MCPWM_TIMER_0, 40);
             motor_control_2(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
+#ifndef IR_COND_BLOCK
         }
+#endif      
+
     }
     else if(m_type == MACHINE_4)
     {
+#ifndef IR_COND_BLOCK
         if((sens_5 == IR_STATE_HIGH) && (sens_4 == IR_STATE_LOW))
         {
+            
+#endif      
             gpio_set_level(ARIES_DIR_MOTOR_M1_PIN,MOTOR_DIR_LOW);
             gpio_set_level(ARIES_DIR_MOTOR_M2_PIN,MOTOR_DIR_HIGH);
             motor_control_1(MCPWM_UNIT_0, MCPWM_TIMER_0, 40);
             motor_control_2(MCPWM_UNIT_0, MCPWM_TIMER_0, 80);
+#ifndef IR_COND_BLOCK
+
         }
+#endif      
+
     }
     else
     {
@@ -1014,9 +1076,9 @@ void Machine_processing_task(void *pvParameter)
             Ir_Sens_selection(IR_SENSOR_1);
             Ir_Sens_selection(IR_SENSOR_2);
             Motor_Dir_update(MACHINE_1,FORWARD);
-            Motor_Dir_update(MACHINE_1,BACKWARD);
-            Motor_Dir_update(MACHINE_1,LEFT);
-            Motor_Dir_update(MACHINE_1,RIGHT);
+            //Motor_Dir_update(MACHINE_1,BACKWARD);
+            //Motor_Dir_update(MACHINE_1,LEFT);
+            //Motor_Dir_update(MACHINE_1,RIGHT);
         }
         else if(gf_2 == BUTTON_STATE_HIGH)
         {
@@ -1024,9 +1086,9 @@ void Machine_processing_task(void *pvParameter)
             Ir_Sens_selection(IR_SENSOR_2);
             Ir_Sens_selection(IR_SENSOR_3);
             Motor_Dir_update(MACHINE_2,FORWARD);
-            Motor_Dir_update(MACHINE_2,BACKWARD);
-            Motor_Dir_update(MACHINE_2,LEFT);
-            Motor_Dir_update(MACHINE_2,RIGHT);
+           //Motor_Dir_update(MACHINE_2,BACKWARD);
+            //Motor_Dir_update(MACHINE_2,LEFT);
+            //Motor_Dir_update(MACHINE_2,RIGHT);
         }
         else if(gf_3 == BUTTON_STATE_HIGH)
         {
@@ -1034,9 +1096,9 @@ void Machine_processing_task(void *pvParameter)
             Ir_Sens_selection(IR_SENSOR_3);
             Ir_Sens_selection(IR_SENSOR_4);
             Motor_Dir_update(MACHINE_3,FORWARD);
-            Motor_Dir_update(MACHINE_3,BACKWARD);
-            Motor_Dir_update(MACHINE_3,LEFT);
-            Motor_Dir_update(MACHINE_3,RIGHT);
+            // Motor_Dir_update(MACHINE_3,BACKWARD);
+            // Motor_Dir_update(MACHINE_3,LEFT);
+            // Motor_Dir_update(MACHINE_3,RIGHT);
         }
         else if(gf_4 == BUTTON_STATE_HIGH)
         {
@@ -1044,9 +1106,9 @@ void Machine_processing_task(void *pvParameter)
             Ir_Sens_selection(IR_SENSOR_4);
             Ir_Sens_selection(IR_SENSOR_5);
             Motor_Dir_update(MACHINE_4,FORWARD);
-            Motor_Dir_update(MACHINE_4,BACKWARD);
-            Motor_Dir_update(MACHINE_4,LEFT);
-            Motor_Dir_update(MACHINE_4,RIGHT);
+            // Motor_Dir_update(MACHINE_4,BACKWARD);
+            // Motor_Dir_update(MACHINE_4,LEFT);
+            // Motor_Dir_update(MACHINE_4,RIGHT);
         }
         else if(gf_5 == BUTTON_STATE_HIGH)
         {
